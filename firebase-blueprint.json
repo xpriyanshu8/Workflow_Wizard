@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "Workflow": {
+      "title": "Workflow",
+      "description": "A visual automation workflow containing nodes and edges.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "nodes": { "type": "array" },
+        "edges": { "type": "array" },
+        "ownerId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "nodes", "edges", "ownerId"]
+    },
+    "Execution": {
+      "title": "Execution",
+      "description": "A single run of a workflow.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "workflowId": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "running", "completed", "failed"] },
+        "logs": { "type": "array" },
+        "outputs": { "type": "object" },
+        "startTime": { "type": "string", "format": "date-time" },
+        "endTime": { "type": "string", "format": "date-time" }
+      },
+      "required": ["workflowId", "status", "startTime"]
+    }
+  },
+  "firestore": {
+    "workflows": {
+      "schema": "Workflow",
+      "description": "Collection for storing workflow definitions."
+    },
+    "executions": {
+      "schema": "Execution",
+      "description": "Collection for storing execution history."
+    },
+    "users": {
+        "schema": "object",
+        "description": "User profiles and settings."
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "AI Workflow Automator",
+  "description": "A node-based visual builder for creating and automating AI-powered agents and workflows.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["AI Automation", "Visual Programming", "Workflow Orchestration"]
+}
